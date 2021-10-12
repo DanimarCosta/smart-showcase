@@ -32,27 +32,16 @@ def hand_distance():
             # Define as cordenas dos pontos e define a distancia entre as mãos
             hand1_pos_xy = lmList1[8]
             hand2_pos_xy = lmList2[8]
-            pos_x = abs(hand1_pos_xy[0] - hand2_pos_xy[0])
-            pos_y = abs(hand1_pos_xy[1] - hand2_pos_xy[1])
+            pos_x = abs(round(hand1_pos_xy[0] - hand2_pos_xy[0]))
+            pos_y = abs(round(hand1_pos_xy[1] - hand2_pos_xy[1]))
             
             # Define a posição das mãos em relação a outra
-            if pos_y >= 100:
-                id_posy = "levantadas"
-            
-            else:
-                id_posy = "abaixadas"
+            coordinates = [pos_x, pos_y]
+            return coordinates
 
-            if pos_x >= 300:
-                id_posx = "afastadas"
-            
-            else:
-                id_posx = "juntas"
-            
-            # Mostra o resultado da comparação lógica
-            print(f"Os indicadores estao {id_posx} e {id_posy}")
-
-    cv2.imshow("Image", img)
+    #cv2.imshow("Image", img)
     cv2.waitKey(1)
 
 while True:
-    hand_distance()
+    teste = hand_distance()
+    print (teste)
