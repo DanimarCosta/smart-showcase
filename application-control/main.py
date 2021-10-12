@@ -4,7 +4,7 @@ from cvzone.HandTrackingModule import HandDetector
 
 cap = cv2.VideoCapture(1)
 detector = HandDetector(detectionCon=0.8, maxHands=2)
-face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
 
 def hand_distance():
     success, img = cap.read()
@@ -68,10 +68,28 @@ def gesture_detector():
             hand_right_y = hand_right[1]
 
             # Procura um objeto de referencia (neste caso o rosto)
+            ret, img = cap.read()
+
+            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            faces = face_cascade.detectMultiScale(gray, 1.1, 5)
+
+            for (x, y, w, h) in faces:
+                # Corta a imagem quando detectar e tenta reconhecer o objeto
+                cut_img = gray[y:y+h, x:x+w]
+                cut_color = img[y:y+h, x:x+w]
+    
+                cv2.rectangle(img, (x ,y), (x + w, y + h), (0, 255, 0), 5)
 
     # Mostra o que esta sendo criado
     cv2.imshow("Image", img)
-    cv2.waitKey(1)
+    
+    if cv2.waitKey(20) & 0xFF == ord('q'):
+        return 1
 
+# Coloca a aplicação em um loop
 while True:
-    gesture_detector()
+    boolean = gesture_detector()
+
+    # Controla o loop
+    if boolean == 1:
+        break
