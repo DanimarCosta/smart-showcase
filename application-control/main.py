@@ -1,5 +1,2 @@
 #Libraries
-import pandas as pd
-import numpy as np
-
-# variable declareble
+import cv2 as cv
