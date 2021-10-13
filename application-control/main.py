@@ -68,17 +68,18 @@ def gesture_detector():
             hand_right_y = hand_right[1]
 
             # Procura um objeto de referencia (neste caso o rosto)
-            ret, img = cap.read()
+    ret, img = cap.read()
 
-            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            faces = face_cascade.detectMultiScale(gray, 1.1, 5)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, 1.1, 2)
 
-            for (x, y, w, h) in faces:
-                # Corta a imagem quando detectar e tenta reconhecer o objeto
-                cut_img = gray[y:y+h, x:x+w]
-                cut_color = img[y:y+h, x:x+w]
+    for (x, y, w, h) in faces:
+        # Corta a imagem quando detectar e tenta reconhecer o objeto
+        cut_img = gray[y:y+h, x:x+w]
+        cut_color = img[y:y+h, x:x+w]
     
-                cv2.rectangle(img, (x ,y), (x + w, y + h), (0, 255, 0), 5)
+        cv2.rectangle(img, (x ,y), (x + w, y + h), (0, 255, 0), 5)
+        cv2.putText(img, 'Pessoa', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
 
     # Mostra o que esta sendo criado
     cv2.imshow("Image", img)
@@ -88,8 +89,8 @@ def gesture_detector():
 
 # Coloca a aplicação em um loop
 while True:
-    boolean = gesture_detector()
+    retorno_lógico = gesture_detector()
 
     # Controla o loop
-    if boolean == 1:
+    if retorno_lógico == 1:
         break
