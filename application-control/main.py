@@ -45,6 +45,7 @@ def hand_distance():
     cv2.waitKey(1)
 
 def gesture_detector():
+    hand_right_x = 0
     success, img = cap.read()
     hands, img = detector.findHands(img)  # Desenha os pontos
     #hands = detector.findHands(img, draw=False)  # Não desenha os pontos
@@ -79,6 +80,7 @@ def gesture_detector():
         cut_color = img[y:y+h, x:x+w]
     
         cv2.rectangle(img, (x ,y), (x + w, y + h), (0, 255, 0), 5)
+        face_xy = [x, y]
         cv2.putText(img, 'Pessoa', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
 
     # Mostra o que esta sendo criado
