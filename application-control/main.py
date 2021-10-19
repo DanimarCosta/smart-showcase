@@ -74,7 +74,7 @@ def gesture_detector():
     ret, img = cap.read()
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray, 1.1, 2)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 2)
 
     for (x, y, w, h) in faces:
         # Corta a imagem quando detectar e tenta reconhecer o objeto
@@ -99,12 +99,12 @@ def gesture_detector():
 
     # Mostra o que esta sendo criado
     if cv2.waitKey(20) & 0xFF == ord('q'):
-        return 1
+        return 1024
 
 # Coloca a aplicação em um loop
 while True:
     retorno_lógico = gesture_detector()
 
     # Controla o loop
-    if retorno_lógico == 1:
+    if retorno_lógico == 1024:
         break
