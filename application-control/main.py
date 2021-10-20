@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from cvzone.HandTrackingModule import HandDetector
-import time
+from time import sleep
 
 # Declara as Variaveis
 cap = cv2.VideoCapture(1)
@@ -117,13 +117,45 @@ def movimentos():
         # Cria um retangulo com base na pos xy e na largura e altura
         cv2.rectangle(img, (x ,y), (x + w, y + h), (0, 255, 0), 5)
         face_xy = [x, y] # Valores das coordenadas do rosto
-        cv2.putText(img, 'Pessoa', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
+        cv2.putText(img, 'Pessoa Detectada', (x-50, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
 
         # Detecta sorriso
         smiles = smile_cascade.detectMultiScale(cut_img, 1.1, 20)
         if smiles in smiles:
             for (sx, sy, sw, sh) in smiles:
                 cv2.rectangle(cut_color, (sx, sy), ((sx + sw), (sy + sh)), (0, 0, 255), 2)
+                cv2.putText(img, 'Sorriso', (sx+250, sy+100), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,42), 2)
+            
+            ativado = True
+        
+            hand_right_x = 0
+            face_xy = [0, 0]
+            success, img = cap.read()
+            hands, img = detector.findHands(img)  # Desenha os pontos
+            #hands = detector.findHands(img, draw=False)  # Não desenha os pontos
+
+            if hands:
+                # Hand 1
+                hand1 = hands[0]
+                lmList1 = hand1["lmList"]  # Lista os 21 pontos
+                bbox1 = hand1["bbox"]  # Informação da caixa delimitadora x,y,w,h
+                centerPoint1 = hand1["center"]  # centro da mão cx,cy
+                handType1 = hand1["type"]  # Tipo de mão esquerda ou direita
+                fingers1 = detector.fingersUp(hand1)
+                hand_right = lmList1[8]
+    
+                try:
+                    if ativado == True:
+                        posx = x - hand_right[0]
+                        print (posx)
+
+                        if posx <= 300:
+                            sleep(1)
+                            if posx <= 70:
+                                return True
+                    
+                except:
+                    ativado = False
     
     # Exibe o resultado para o usuario
     cv2.imshow("Image", img)
@@ -133,9 +165,16 @@ def movimentos():
         return 1024
 
 # Coloca a aplicação em um loop
-while True:
-    retorno_lógico = movimentos()
+def app():
+    while True:
+        retorno_lógico = movimentos()
 
-    # Controla o loop
-    if retorno_lógico == 1024:
-        break
+        if retorno_lógico == True:
+            print("Mover para o lado direito")
+            break
+
+        # Controla o loop
+        if retorno_lógico == 1024:
+            break
+
+app()
