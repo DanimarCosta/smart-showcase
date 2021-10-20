@@ -150,8 +150,8 @@ def movimentos():
                         print (posx)
 
                         if posx <= 300:
-                            sleep(1)
-                            if posx <= 70:
+                            sleep(0.5)
+                            if posx <= 50:
                                 return True
                     
                 except:
@@ -171,6 +171,12 @@ def app():
 
         if retorno_lógico == True:
             print("Mover para o lado direito")
+            print("")
+            print("")
+            sleep(1.5)
+            print("Teste realizado com sucesso, movimento detectado")
+            print("")
+            print("")
             break
 
         # Controla o loop
