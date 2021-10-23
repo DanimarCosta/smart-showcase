@@ -1,15 +1,40 @@
+# Bibliotecas
 import cv2
 import numpy as np
 from cvzone.HandTrackingModule import HandDetector
 from time import sleep
 
-# Declara as Variaveis
+# Configurações iniciais
 cap = cv2.VideoCapture(1)
 detector = HandDetector(detectionCon=0.8, maxHands=2)
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
-smile_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_smile.xml')
 
+# Ativa a detecção de movimento
 def ativador():
+    try:
+        pos_real_y = y - hand_right[1]
+        if pos_real_y >= 100:
+            return True
+                
+    # Caso não consiga encontrar, apenas passa para próxima instrução
+    except:
+        pass
+
+# Detecta o movimento
+def mover_lado():
+    # Tenta encontrar a distancia entre as mãos e a cabeça
+    posx = x - hand_right[0]
+    print (posx)
+
+    if posx <= 300:
+        sleep(1)
+    if posx <= 70:
+        sleep(0.5)
+    if posx <= 50:
+        return True
+
+def controle(type):
+    # Inicia a captura dos frames
     ret, img = cap.read()
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -20,58 +45,56 @@ def ativador():
         cut_img = gray[y:y+h, x:x+w]
         cut_color = img[y:y+h, x:x+w]
     
-        # Cria um retangulo com base na pos xy e na largura e altura
+        # Cria um retangulo com base na posição xy, largura e altura
         cv2.rectangle(img, (x ,y), (x + w, y + h), (0, 255, 0), 5)
         face_xy = [x, y] # Valores das coordenadas do rosto
         cv2.putText(img, 'Pessoa Detectada', (x-50, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
 
-        
-        # Hands
         hand_right_x = 0
         face_xy = [0, 0]
+
+        # Configuração inicial das mãos
         success, img = cap.read()
-        hands, img = detector.findHands(img)  # Desenha os pontos
-        #hands = detector.findHands(img, draw=False)  # Não desenha os pontos
+        hands, img = detector.findHands(img) 
+        #hands = detector.findHands(img, draw=False)
         
+        # Controle da posição das mãos
         if hands:
                 # Hand 1
                 hand1 = hands[0]
-                lmList1 = hand1["lmList"]  # Lista os 21 pontos
-                bbox1 = hand1["bbox"]  # Informação da caixa delimitadora x,y,w,h
-                centerPoint1 = hand1["center"]  # centro da mão cx,cy
-                handType1 = hand1["type"]  # Tipo de mão esquerda ou direita
+                lmList1 = hand1["lmList"] 
+                bbox1 = hand1["bbox"]
+                centerPoint1 = hand1["center"]
+                handType1 = hand1["type"]
                 fingers1 = detector.fingersUp(hand1)
                 hand_right = lmList1[8]
 
-                try:
-                    pos_real_y = y - hand_right[1]
-                    if pos_real_y >= 100:
-                        return True
-
-                except:
-                    pass
+                if type == "Ativador":
+                    ativador()
+                
+                if type == "Movimento":
+                    mover_lado()
     
     # Exibe o resultado do processamento
     #cv2.imshow("Image", img)
 
     if cv2.waitKey(20) & 0xFF == ord('q'):
         return True
-    
-    # Exibe o resultado para o usuario
-    cv2.imshow("Image", img)
-
-    # Mostra o que esta sendo criado
-    if cv2.waitKey(20) & 0xFF == ord('q'):
-        return 1024
-
-# Coloca a aplicação em um loop
-print("Pronto para iniciar")
 
 # Detecta a interação do usuario
+print("Pronto para iniciar")
 while True:
-    status = ativador()
+    status = controle("Ativador")
 
     if status == True:
         print("Iniciado com sucesso")
         break
 
+# Detecta o movimento do usuario
+print("Detectando movimento")
+while True:
+    status = controle("Movimento")
+
+    if status == True:
+        print("Mover para o lado")
+        break
