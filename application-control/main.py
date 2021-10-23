@@ -69,6 +69,7 @@ def controle(type):
                 fingers1 = detector.fingersUp(hand1)
                 hand_right = lmList1[8]
 
+                # Controle da aplicação
                 if type == "Ativador":
                     ativador()
                 
