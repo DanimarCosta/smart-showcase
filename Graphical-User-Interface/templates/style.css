@@ -1,3 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
+
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
 body{
-    background-color: whitesmoke;
+    background-color: rgb(223, 238, 234);
+}
+
+#menu-horizontal{
+    list-style-type: none;
+    padding: 0;
+    background-color: rgb(167, 196, 188);
+}
+
+#menu-horizontal li{
+    display: inline-block;
+    padding: 30px;
+    align-content: right;
+}
+
+#menu-horizontal li a{
+    color: blanchedalmond;
+    display: inline;
+    text-decoration: none;
+    padding: 10px;
+    transition: background .4s;
+}
+
+#menu-horizontal li a:hover{
+    background-color: cornflowerblue;
+}
+
+#Data-Hora{
+    color: cornsilk;
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
+    padding: 0;
 }
