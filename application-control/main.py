@@ -9,30 +9,6 @@ cap = cv2.VideoCapture(1)
 detector = HandDetector(detectionCon=0.8, maxHands=2)
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
 
-# Ativa a detecção de movimento
-def ativador():
-    try:
-        pos_real_y = y - hand_right[1]
-        if pos_real_y >= 100:
-            return True
-                
-    # Caso não consiga encontrar, apenas passa para próxima instrução
-    except:
-        pass
-
-# Detecta o movimento
-def mover_lado():
-    # Tenta encontrar a distancia entre as mãos e a cabeça
-    posx = x - hand_right[0]
-    print (posx)
-
-    if posx <= 300:
-        sleep(1)
-    if posx <= 70:
-        sleep(0.5)
-    if posx <= 50:
-        return True
-
 def controle(type):
     # Inicia a captura dos frames
     ret, img = cap.read()
@@ -71,13 +47,29 @@ def controle(type):
 
                 # Controle da aplicação
                 if type == "Ativador":
-                    ativador()
+                        try:
+                            pos_real_y = y - hand_right[1]
+                            if pos_real_y >= 100:
+                                return True
+                
+                        # Caso não consiga encontrar, apenas passa para próxima instrução
+                        except:
+                            pass
+
                 
                 if type == "Movimento":
-                    mover_lado()
+                        # Tenta encontrar a distancia entre as mãos e a cabeça
+                        posx = x - hand_right[0]
+
+                        if posx <= 300:
+                            sleep(1)
+                        if posx <= 70:
+                            sleep(0.5)
+                        if posx <= 50:
+                            return 1024
     
     # Exibe o resultado do processamento
-    #cv2.imshow("Image", img)
+    cv2.imshow("Image", img)
 
     if cv2.waitKey(20) & 0xFF == ord('q'):
         return True
@@ -86,7 +78,6 @@ def controle(type):
 print("Pronto para iniciar")
 while True:
     status = controle("Ativador")
-
     if status == True:
         print("Iniciado com sucesso")
         break
@@ -96,6 +87,6 @@ print("Detectando movimento")
 while True:
     status = controle("Movimento")
 
-    if status == True:
+    if status == 1024:
         print("Mover para o lado")
         break

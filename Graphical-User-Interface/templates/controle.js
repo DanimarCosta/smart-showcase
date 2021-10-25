@@ -1,23 +1,17 @@
-function mensagens(texto){
-    alert(texto);
-}
+const carrega_imagens = (divDestino, data) => {
+    var imagens = data.attr('imagens').split(",");
+    var html = "";
+    for(i=0;i<imagens.length;i++){
+      html = html + "<img src='" + imagens[0] + "'height=1000px'/>";
+    }
+  
+    divDestino.html(html);
+  }
 
-function horario(){
-    // Obtém a data/hora atual
-    var data = new Date();
-
-    // Guarda cada pedaço em uma variável
-    var dia     = data.getDate();           // 1-31
-    var mes     = data.getMonth();          // 0-11 (zero=janeiro)
-    var ano4    = data.getFullYear();       // 4 dígitos
-    var hora    = data.getHours();          // 0-23
-    var min     = data.getMinutes();        // 0-59
-    var seg     = data.getSeconds();        // 0-59
-
-    // Formata a data e a hora (note o mês + 1)
-    var str_data = dia + '/' + (mes+1) + '/' + ano4;
-    var str_hora = hora + ':' + min;
-    var data_hora = [str_data, str_hora]
-
-    document.write(data_hora[1])
+const mudar_cor = () => {
+    document.getElementById("btn_erro").
+    addEventListener("click", function(){
+        document.querySelector("*").
+        setAttribute("class", "azul");
+    })
 }
