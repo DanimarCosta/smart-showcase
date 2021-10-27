@@ -8,10 +8,13 @@ const carrega_imagens = (divDestino, data) => {
     divDestino.html(html);
   }
 
-const mudar_cor = () => {
+const mudar_cor = (cor) => {
     document.getElementById("btn_erro").
     addEventListener("click", function(){
-        document.querySelector("*").
-        setAttribute("class", "azul");
+    document.querySelector("*").
+    setAttribute("class", cor);
     })
+}
+const tela_azul = () => {
+  mudar_cor('azul')
 }

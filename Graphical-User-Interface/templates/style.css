@@ -13,6 +13,11 @@
     background-color: blue;
     transition: all 0.25s ease-in-out;
 }
+.branco{
+    color: black;
+    background-color: white;
+    transition: all 0.25s ease-in-out;
+}
 button{
     border-radius: 10px;
     font-size: 22px;
