@@ -75,7 +75,7 @@ def controle(type):
                             pass
     
     # Exibe o resultado do processamento
-    cv2.imshow("Image", img)
+    #cv2.imshow("Image", img)
 
     if cv2.waitKey(20) & 0xFF == ord('q'):
         return True
@@ -87,7 +87,7 @@ while True:
     if status == True:
         print("Usuario requisitando interação")
         break
-
+    
 # Detecta o movimento do usuario
 print("Detectando movimento...")
 while True:
