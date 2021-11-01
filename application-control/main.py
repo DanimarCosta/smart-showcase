@@ -51,7 +51,7 @@ def controle(type):
                             pos_real_y = y - hand_right[1]
                             posx = x - hand_right[0]
                             if posx >=-250 and posx <= 250:
-                                if pos_real_y >= 100:
+                                if pos_real_y >= -100:
                                     return True
                 
                         # Caso não consiga encontrar, apenas passa para próxima instrução
@@ -63,7 +63,7 @@ def controle(type):
                         posx = x - hand_right[0]
                         pos_real_y = y - hand_right[1]
                         
-                        if pos_real_y >= -500 and pos_real_y <=-100:
+                        if pos_real_y >= -500 and pos_real_y <=-25:
                             if posx <= 300:
                                 sleep(1)
                             if posx <= 70:
