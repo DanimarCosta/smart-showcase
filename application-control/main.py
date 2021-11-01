@@ -49,24 +49,30 @@ def controle(type):
                 if type == "Ativador":
                         try:
                             pos_real_y = y - hand_right[1]
-                            if pos_real_y >= 100:
-                                return True
+                            posx = x - hand_right[0]
+                            if posx >=-250 and posx <= 250:
+                                if pos_real_y >= 100:
+                                    return True
                 
                         # Caso não consiga encontrar, apenas passa para próxima instrução
                         except:
                             pass
 
-                
                 if type == "Movimento":
                         # Tenta encontrar a distancia entre as mãos e a cabeça
                         posx = x - hand_right[0]
-
-                        if posx <= 300:
-                            sleep(1)
-                        if posx <= 70:
-                            sleep(0.5)
-                        if posx <= 50:
-                            return 1024
+                        pos_real_y = y - hand_right[1]
+                        
+                        if pos_real_y >= -500 and pos_real_y <=-100:
+                            if posx <= 300:
+                                sleep(1)
+                            if posx <= 70:
+                                sleep(0.5)
+                            if posx <= 50:
+                                return 1024
+                        
+                        else:
+                            pass
     
     # Exibe o resultado do processamento
     cv2.imshow("Image", img)
@@ -75,18 +81,18 @@ def controle(type):
         return True
 
 # Detecta a interação do usuario
-print("Pronto para iniciar")
+print("Ascene para começar")
 while True:
     status = controle("Ativador")
     if status == True:
-        print("Iniciado com sucesso")
+        print("Usuario requisitando interação")
         break
 
 # Detecta o movimento do usuario
-print("Detectando movimento")
+print("Detectando movimento...")
 while True:
     status = controle("Movimento")
 
     if status == 1024:
-        print("Mover para o lado")
+        print("Mover para o lado - Detectado")
         break
