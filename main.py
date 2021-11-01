@@ -80,19 +80,20 @@ def controle(type):
     if cv2.waitKey(20) & 0xFF == ord('q'):
         return True
 
-# Detecta a interação do usuario
-print("Ascene para começar")
-while True:
-    status = controle("Ativador")
-    if status == True:
-        print("Usuario requisitando interação")
-        break
-    
-# Detecta o movimento do usuario
-print("Detectando movimento...")
-while True:
-    status = controle("Movimento")
+def controlador():
+    # Detecta a interação do usuario
+    print("Ascene para começar")
+    while True:
+        status = controle("Ativador")
+        if status == True:
+            print("Usuario requisitando interação")
+            break
+        
+    # Detecta o movimento do usuario
+    print("Detectando movimento...")
+    while True:
+        status = controle("Movimento")
 
-    if status == 1024:
-        print("Mover para o lado - Detectado")
-        break
+        if status == 1024:
+            print("Mover para o lado - Detectado")
+            break
