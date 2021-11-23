@@ -46,11 +46,40 @@ body{
     justify-content: center;
     align-items: center;
     padding-left: 15%;
+    padding-top: 1%;
 }
+
+#tag{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 13%;
+    color: whitesmoke;
+}
+
+#color{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 13%;
+
+    color: whitesmoke;
+    border-radius: 20px;
+    background-color: rgb(35, 36, 35);
+    height: 70px;
+}
+
 #conteudo{
     display: flex;
     color: whitesmoke;
-    padding: 90px;
+    font-size: large;
     justify-content: center;
     align-items: center;
 }
