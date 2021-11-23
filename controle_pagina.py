@@ -11,8 +11,6 @@ def hello():
 @app.route("/teste")
 def index():
     return redirect("http://www.example.com", code=302)
-    sleep(2)
-    return redirect("http://www.google.com", code=302)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
