@@ -46,8 +46,41 @@ body{
     align-content: center;
     justify-content: center;
     align-items: center;
-    padding-left: 15%;
+    padding-left: 1%;
     padding-top: 1%;
+}
+
+#cor_status{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1%;
+    padding-top: 1%;;
+}
+
+.default_color{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1%;
+    padding-top: 1%;
+    background-color: rgb(30, 31, 30);
+    border-radius: 20px;
+}
+
+.cor_status{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1%;
+    padding-top: 1%;
+    background-color: rgb(255, 0, 0);
+    border-radius: 20px;
 }
 
 #tag{
@@ -57,24 +90,8 @@ body{
     align-content: center;
     justify-content: center;
     align-items: center;
-    padding-left: 13%;
+    padding-left: 9%;
     color: whitesmoke;
-}
-
-#color{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-
-    padding-left: 13%;
-
-    color: whitesmoke;
-    border-radius: 20px;
-    background-color: rgb(35, 36, 35);
-    height: 70px;
 }
 
 #conteudo{
@@ -88,4 +105,68 @@ body{
 
 #qr_code{
     padding-left: 75%;
+}
+
+#ensino{
+    background-color: rgb(30, 31, 30);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cursos{
+    background-color: rgb(30, 31, 30);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tour{
+    background-color: rgb(30, 31, 30);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#maps{
+    background-color: rgb(30, 31, 30);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ensino{
+    background-color: rgb(36, 37, 36);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cursos{
+    background-color: rgb(36, 37, 36);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tour{
+    background-color: rgb(36, 37, 36);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.maps{
+    background-color: rgb(36, 37, 36);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
