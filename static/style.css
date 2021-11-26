@@ -83,17 +83,6 @@ body{
     border-radius: 20px;
 }
 
-#tag{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    padding-left: 9%;
-    color: whitesmoke;
-}
-
 #conteudo{
     display: flex;
     color: whitesmoke;
@@ -108,65 +97,79 @@ body{
 }
 
 #ensino{
-    background-color: rgb(30, 31, 30);
+    background-color: rgb(37, 38, 37);
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 160px;
 }
 
 #cursos{
-    background-color: rgb(30, 31, 30);
+    background-color: rgb(37, 38, 37);
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 160px;
 }
 
 #tour{
-    background-color: rgb(30, 31, 30);
+    background-color: rgb(37, 38, 37);
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 160px;
 }
 
 #maps{
-    background-color: rgb(30, 31, 30);
+    background-color: rgb(37, 38, 37);
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 160px;
 }
 
-.ensino{
-    background-color: rgb(36, 37, 36);
-    border-radius: 20px;
-    display: flex;
+#tag{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    align-content: center;
     justify-content: center;
     align-items: center;
+    padding-left: 9%;
+    color: whitesmoke;
+    font: normal;
+    font-weight: lighter;
 }
 
-.cursos{
-    background-color: rgb(36, 37, 36);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.tag_default{
+    color: white;
+    font-weight: lighter;
+    font-size: normal;
 }
 
-.tour{
-    background-color: rgb(36, 37, 36);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.tag_ensino{
+    color: brown;
+    font-size: large;
 }
 
-.maps{
-    background-color: rgb(36, 37, 36);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.tag_cursos{
+    color: brown;
+    font-weight: bolder;
+    font-size: large;
+}
+
+.tag_tour{
+    color: brown;
+    font-weight: bolder;
+    font-size: large;
+}
+
+.tag_maps{
+    color: brown;
+    font-weight: bolder;
+    font-size: large;
 }
