@@ -1,6 +1,5 @@
 import os
 from flask import Flask, render_template, redirect
-from time import sleep
 
 app = Flask(__name__)
 
@@ -26,6 +25,6 @@ def tour():
 def maps():
     return render_template("maps.html")
 
-if __name__ == "__main__":
+def nunsei():
     port = int(os.environ.get('PORT', 5000))
     app.run(port=port)
