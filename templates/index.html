@@ -26,33 +26,34 @@
 <div id="navigation">
   <div id="ensino">
     <img src="https://cdn-icons.flaticon.com/png/512/769/premium/769651.png?token=exp=1637696472~hmac=c99a812a0b23c7a3a5e93118a8b5fdf5"
-    height="150px" onclick="status_ensino()">
+    height="150px" onclick="redirecionador('ensino')">
 </div>
 <div id="cursos">
     <img src="https://cdn-icons-png.flaticon.com/512/2000/2000920.png"
-    height="150px" onclick="status_cursos()">
+    height="150px" onclick="redirecionador('cursos')">
 </div>
 <div id="tour">
-    <img src="https://cdn-icons-png.flaticon.com/512/5261/5261261.png" height="150px" onclick="status_tour()">
+    <img src="https://cdn-icons-png.flaticon.com/512/5261/5261261.png" height="150px" onclick="redirecionador('tour')">
   </div>
   <div id="maps">
     <img src="https://cdn-icons.flaticon.com/png/512/3156/premium/3156158.png?token=exp=1637696424~hmac=308124d28d616c39bb94802407ce0b28"
-    height="150px" onclick="status_maps()">
+    height="150px" onclick="redirecionador('maps')">
 </div>
 </div>
 
 <div id="tag">
-  <p>Ensino Curricular</p>
-  <p>Cursos profissionalizantes</p>
-  <p>Faça um tour virtual</p>
-  <p>Unidade mais próxima</p>
-</div>
-
-<div id="cor_status">
-  <img id="cor_status_ensino" src="https://cdn-icons-png.flaticon.com/512/3248/3248235.png" height="40px">
-  <img id="cor_status_cursos" src="https://cdn-icons-png.flaticon.com/512/3248/3248235.png" height="40px">
-  <img id="cor_status_tour" src="https://cdn-icons-png.flaticon.com/512/3248/3248235.png" height="40px">
-  <img id="cor_status_maps" src="https://cdn-icons-png.flaticon.com/512/3248/3248235.png" height="40px">
+  <div id = "tag_ensino">
+    <p onclick="status_ensino()">Ensino Curricular</p>
+  </div>
+  <div id="tag_cursos">
+    <p onclick="status_cursos()">Cursos profissionalizantes</p>
+  </div>
+  <div id="tag_tour">
+    <p onclick="status_tour()">Faça um tour virtual</p>
+  </div>
+  <div id="tag_maps">
+    <p onclick="status_maps()">Unidade mais próxima</p>
+  </div>
 </div>
 
 <div id="conteudo">
