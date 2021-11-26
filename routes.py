@@ -4,13 +4,27 @@ from time import sleep
 
 app = Flask(__name__)
 
+# Home Page
 @app.route("/")
-def hello():
+def home():
     return render_template("index.html")
 
-@app.route("/teste")
-def index():
-    return redirect("http://www.example.com", code=302)
+#Sub Pages
+@app.route("/ensino")
+def ensino():
+    return render_template("ensino.html")
+
+@app.route("/cursos")
+def cursos():
+    return render_template("cursos.html")
+
+@app.route("/tour")
+def tour():
+    return render_template("tour.html")
+
+@app.route("/maps")
+def maps():
+    return render_template("maps.html")
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
