@@ -134,8 +134,8 @@ print("Vitrine Iniciada com sucesso, inicializando back-end")
 
 # Controlador da imagem
 def controlador():
+    contador = 0
     while True:
-        contador = 0
         # Detecta a interação do usuario
         print("Ascene para começar")
         while True:
@@ -172,6 +172,7 @@ def controlador():
                         status = controle("Ativador")
                         if status == True:
                             bot.voltar()
+                            contador = 1
                             break
                     break
         
@@ -197,6 +198,7 @@ def controlador():
                         status = controle("Ativador")
                         if status == True:
                             bot.voltar()
+                            contador = 2
                             break
                     break
         
@@ -223,6 +225,7 @@ def controlador():
                         status = controle("Ativador")
                         if status == True:
                             bot.voltar()
+                            contador = 3
                             break
                     break
 
@@ -249,6 +252,7 @@ def controlador():
                         status = controle("Ativador")
                         if status == True:
                             bot.voltar()
+                            contador = 4
                             break
                     break
 
