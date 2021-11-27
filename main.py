@@ -121,6 +121,10 @@ class Bot():
     # Comando para atualizar a pagina
     def atualizar(self):
         self.driver.refresh()
+    
+    #Comando para voltar a pagina anterior
+    def voltar(self):
+        self.driver.back()
 
 # Inicializa a pagina
 bot = Bot()
@@ -130,21 +134,122 @@ print("Vitrine Iniciada com sucesso, inicializando back-end")
 
 # Controlador da imagem
 def controlador():
-    # Detecta a interação do usuario
-    print("Ascene para começar")
     while True:
-        status = controle("Ativador")
-        if status == True:
-            print("Usuario requisitando interação")
-            bot.click_tag_ensino()
-            sleep(2)
-            break
-        
-    # Detecta o movimento do usuario
-    print("Detectando movimento...")
-    while True:
-        status = controle("Movimento")
+        contador = 0
+        # Detecta a interação do usuario
+        print("Ascene para começar")
+        while True:
+            status = controle("Ativador")
+            if status == True:
+                print("Usuario requisitando interação")
+                bot.click_tag_ensino()
+                sleep(2)
+                contador = 1
+                break
 
-        if status == 1024:
-            print("Mover para o lado - Detectado")
-            break
+        # Detecta o movimento do usuario
+        print("Detectando movimento...")
+        
+        # Ensino
+        if contador == 1:
+            while True:
+                status = controle("Movimento")
+                if status == 1024:
+                    print("Mover para o lado - Detectado")
+                    contador = 2
+                    bot.atualizar()
+                    sleep(0.5)
+                    bot.click_tag_cursos()
+                    break
+
+                status = controle("Ativador")
+                if status == True:
+                    bot.click_ensino()
+
+                    # Comando para voltar de pagina
+                    sleep(1)
+                    while True:
+                        status = controle("Ativador")
+                        if status == True:
+                            bot.voltar()
+                            break
+                    break
+        
+        # Cursos
+        if contador == 2:
+            while True:
+                status = controle("Movimento")
+                if status == 1024:
+                    print("Mover para o lado - Detectado")
+                    contador = 3
+                    bot.atualizar()
+                    sleep(0.5)
+                    bot.click_tag_tour()
+                    break
+
+                status = controle("Ativador")
+                if status == True:
+                    bot.click_cursos()
+
+                    # Comando para voltar de pagina
+                    sleep(1)
+                    while True:
+                        status = controle("Ativador")
+                        if status == True:
+                            bot.voltar()
+                            break
+                    break
+        
+        # Tour
+        if contador == 3:
+            while True:
+                status = controle("Movimento")
+                if status == 1024:
+                    print("Mover para o lado - Detectado")
+                    contador = 4
+                    bot.atualizar()
+                    sleep(0.5)
+                    bot.click_tag_maps()
+                    break
+
+                # Tour
+                status = controle("Ativador")
+                if status == True:
+                    bot.click_tour()
+
+                    # Comando para voltar de pagina
+                    sleep(1)
+                    while True:
+                        status = controle("Ativador")
+                        if status == True:
+                            bot.voltar()
+                            break
+                    break
+
+        # Maps
+        if contador == 4:
+            while True:
+                status = controle("Movimento")
+                if status == 1024:
+                    print("Mover para o lado - Detectado")
+                    contador = 1
+                    bot.atualizar()
+                    sleep(0.5)
+                    bot.click_tag_ensino()
+                    break
+
+                # Tour
+                status = controle("Ativador")
+                if status == True:
+                    bot.click_maps()
+
+                    # Comando para voltar de pagina
+                    sleep(1)
+                    while True:
+                        status = controle("Ativador")
+                        if status == True:
+                            bot.voltar()
+                            break
+                    break
+
+controlador()
