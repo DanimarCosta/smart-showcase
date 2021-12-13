@@ -18,5 +18,14 @@
   Python | Html (marcação)
   Flask | CSS
   Javascript | Netlify (Hosting)
+  
+  <h2>Requisitos para rodar o software</h2>
 
-</div>
+  Minímos  | Recomendados
+  --------- | ------
+  2gb ram | 4gb ram
+  8gb disco | 8gb disco
+  Processador 1.5ghz quad-core| Processador 2.3ghz quad-core
+  Conexão a internet requerida | Conexão a internet requerida
+
+  </div>
