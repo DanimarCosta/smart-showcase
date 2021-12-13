@@ -31,5 +31,9 @@
   <p>Suporte a Raspberry Pi3 ou posterior</p>
   <img src="https://projects-static.raspberrypi.org/projects/raspberry-pi-setting-up/0d6033edf45ad2d4185ed05d6cd9a01e2f803034/pt-BR/images/raspberry-pi.png" height=300px>
   <p>ATENÇÃO: Utilize um cooler no Raspberry Pi, risco de super aquecimento ou danos ao processador do microcompudador.</p>
-
+  
+  <div id="contato">
+    <h4>Caso encontre algum problema, reporte para:</h4>
+    <h6>danimarcamposcosta@gmail.com</h6>
+  </div>
   </div>
