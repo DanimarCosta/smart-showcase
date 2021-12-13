@@ -1,6 +1,7 @@
 # smart-showcase
 
 <h3>Ver com uma vitrine nunca foi tão legal!, interaja com os produtos através de gestos e movimentos.<h3>
+<img src="https://static.wixstatic.com/media/c7717e_403ee45e812947169a4cc613002eab25~mv2.jpg/v1/fill/w_560,h_320,al_c,lg_1,q_80/Vitrine_Digital.webp" height=300px>
 
 <div id="tecnologias">
   <h2>Tecnologias utilizadas no algoritmo</h2>
